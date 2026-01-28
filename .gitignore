@@ -1,0 +1,64 @@
+# LiveRec specific excludes
+
+# 1. Models & Checkpoints (Large files)
+checkpoints/*
+!checkpoints/.gitkeep
+models_out/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# 2. Data & Cache (Privacy & Size)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+cache/*
+!cache/.gitkeep
+dataset/*
+!dataset/.gitkeep
+*.parquet
+*.duckdb
+*.pkl
+*.pickle
+*.csv
+*.tsv
+*.db
+*.sqlite3
+
+# 3. Logs & Experiment Results
+logs/
+logs.jsonl
+train_scope_debug.jsonl
+*.jsonl
+*.log
+wandb/
+runs/
+results/
+output/
+profiling/
+logs_*.txt
+validation_*.log
+docs/analysis/*.txt
+docs/analysis/*.jsonl
+
+# 4. System & IDE
+.DS_Store
+.cursor/
+.vscode/
+.idea/
+*.swp
+
+# 5. Legacy artifacts (Keep code, ignore data/models)
+legacy/**/data/
+legacy/**/*.pt
+legacy/**/*.pth
+legacy/**/*.csv
+legacy/**/*.parquet
+
+# 6. Temporary / Local scripts
+# (Note: Useful utility scripts should be committed, so *.sh is NOT ignored by default)
+# *.sh 
+__pycache__/
+*.pyc

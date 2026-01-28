@@ -1,0 +1,34 @@
+dataset: data/processed/chzzk_compat/interactions_user_sample_p15_u5_s3.parquet
+viewer_trends_path: data/processed/chzzk/streamer_viewer_trends.parquet
+
+# Model
+model: GRU4RecSpike
+K: 128
+l2: 0.0
+mto: gru4rec_spike_trend_only_chzzk_p15_s10
+model_path: checkpoints/gru4rec
+
+# Training
+batch_size: 256
+lr: 0.001
+num_epochs: 300
+seq_len: 10
+val_every: 1
+early_stop: 10
+val_maxit: 500
+device: cuda
+num_negs: 1
+
+# Trend & Spike Features
+viewer_feat_mode: spike
+trend_integration_mode: delta
+use_percentile_features: false
+use_percentile_3d: true      # 3-Feature System (p_glob, p_self, p_window)
+use_hybrid_features: false
+ablation_mask_user_repr: true
+ablation_mask_global: false
+ablation_mask_self: false
+ablation_mask_window: false
+disable_timeout: true
+caching: true
+cache_dir: cache/

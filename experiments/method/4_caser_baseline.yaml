@@ -1,0 +1,29 @@
+dataset: data/raw/100k.csv
+viewer_trends_path: data/processed/100k_viewer_trends/streamer_viewer_trends.parquet
+
+# Model
+model: Caser
+K: 128
+l2: 0.0
+mto: caser_baseline
+model_path: checkpoints/caser
+caser_n_v: 4
+caser_n_h: 16
+caser_horiz_kernels: [2, 3, 4]
+
+# Training
+batch_size: 256
+lr: 0.001
+num_epochs: 300
+seq_len: 16
+val_every: 1
+early_stop: 10
+val_maxit: 500
+device: cuda
+num_negs: 1
+
+# Trend & Spike Features
+viewer_feat_mode: "off"
+disable_timeout: true
+caching: true
+cache_dir: cache/

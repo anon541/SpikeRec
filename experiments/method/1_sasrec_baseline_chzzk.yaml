@@ -1,0 +1,39 @@
+dataset: data/processed/chzzk_compat/interactions_user_sample_p15_u5_s3.parquet
+viewer_trends_path: data/processed/chzzk/streamer_viewer_trends.parquet
+
+# Model
+model: MinimalSpikeHeadMLP
+K: 128
+num_att: 2
+num_heads: 2
+l2: 0.0
+mto: sasrec_baseline_chzzk_p15_s10
+model_path: checkpoints/sasrec
+
+# Training
+batch_size: 256
+lr: 0.001
+num_epochs: 300
+seq_len: 10
+val_every: 1
+early_stop: 10
+val_maxit: 500
+device: cuda
+# LiveRec Specific
+fr_rep: false
+fr_ctx: false
+topk_att: 64
+
+# Trend & Spike Features
+viewer_feat_mode: "off"
+trend_integration_mode: none
+use_z_weighted_loss: false
+use_percentile_features: false
+use_percentile_3d: false      # New 3-Feature System
+use_hybrid_features: false
+repeat_aware_gating: false   # No Gating
+dynamic_gating: false
+disable_timeout: true
+caching: true
+cache_dir: cache/
+

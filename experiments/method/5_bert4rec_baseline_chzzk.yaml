@@ -1,0 +1,27 @@
+dataset: data/processed/chzzk_compat/interactions_user_sample_p15_u5_s3.parquet
+viewer_trends_path: data/processed/chzzk/streamer_viewer_trends.parquet
+
+# Model
+model: BERT4Rec
+K: 128
+l2: 0.0
+mto: bert4rec_baseline_chzzk_p15_s10
+model_path: checkpoints/bert4rec
+bert_mask_prob: 0.2
+
+# Training
+batch_size: 256
+lr: 0.001
+num_epochs: 300
+seq_len: 10
+val_every: 1
+early_stop: 10
+val_maxit: 500
+device: cuda
+num_negs: 1
+
+# Trend & Spike Features
+viewer_feat_mode: "off"
+disable_timeout: true
+caching: true
+cache_dir: cache/
